@@ -8,13 +8,13 @@ public abstract class ElectricalElement {
 	private Complex resistance;
 	private String name;
 	private int id;
-	private static int nbElement;
+	//private static int nbElement;
 	private String unit;
 	
 	public ElectricalElement() {
 		// TODO Auto-generated constructor stub
-		nbElement++;
-		this.id = nbElement;
+		//nbElement++;
+		//this.id = nbElement;
 	}
 
 	public String getName() {
@@ -33,9 +33,9 @@ public abstract class ElectricalElement {
 		return currentIntensity;
 	}
 
-	public static int getNbElement() {
-		return nbElement;
-	}
+	//public static int getNbElement() {
+		//return nbElement;
+	//}
 
 	public void setVoltage(Complex voltage) {
 		this.voltage = voltage;

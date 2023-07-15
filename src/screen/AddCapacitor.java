@@ -4,10 +4,10 @@ import ElectricalElement.Capacitor;
 
 public class AddCapacitor extends AddComponent{
 	
-	public AddCapacitor() {
+	public AddCapacitor(int index) {
 		super();
 		
-		index += 1;
+		this.index = index;
 		this.setName("C" + index);
 		this.getUnit().addItem("F");
 		this.getUnit().addItem("mF");

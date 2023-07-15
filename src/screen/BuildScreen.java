@@ -10,6 +10,8 @@ import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import org.apache.commons.math3.complex.Complex;
+
 import Circuit.*;
 import ElectricalElement.*;
 import VoltageSource.*;
@@ -26,7 +28,7 @@ public class BuildScreen extends JFrame{
 	
 	JPanel createEast() {
 		JPanel east = new JPanel();
-		east.setPreferredSize(new Dimension(300, 500));
+		east.setPreferredSize(new Dimension(350, 500));
 		east.add(Box.createVerticalStrut(350));
 		
 		JButton done = new JButton("SUBMIT");
@@ -77,25 +79,27 @@ public class BuildScreen extends JFrame{
 					else {
 						double inductance = addcomp.getDoubleParameter();
 						String unit = (String)addcomp.getUnit().getSelectedItem();
-						
 						Inductor inductor = new Inductor(inductance, unit);
 						inductor.setName(addcomp.getName());
 						circuit.addElement(inductor);
 					}
 				}
 				
+				circuit.trigger();
 				if (circuit instanceof ParallelCircuit) {
 					new DisplayScreen((ParallelCircuit)circuit);
+					circuit = new ParallelCircuit();
 				}
 				else {
+						
 					new DisplayScreen((SerialCircuit)circuit);
-				}
-				dispose();
+					circuit = new SerialCircuit();
+					}
 			}
 			
 		});
 		east.add(done);
-		
+
 		return east;
 	}
 	
@@ -208,7 +212,7 @@ public class BuildScreen extends JFrame{
 				}
 				nbElements++;
 				
-				AddComponent newR = new AddResistor();
+				AddComponent newR = new AddResistor(nbElements);
 				newR.getButton().addActionListener(new ActionListener() {
 
 					@Override
@@ -239,7 +243,7 @@ public class BuildScreen extends JFrame{
 				}
 				nbElements++;
 				
-				AddComponent newC = new AddCapacitor();
+				AddComponent newC = new AddCapacitor(nbElements);
 				newC.getButton().addActionListener(new ActionListener() {
 
 					@Override
@@ -269,8 +273,7 @@ public class BuildScreen extends JFrame{
 					return;
 				}
 				nbElements++;
-				
-				AddComponent newL = new AddInductor();
+				AddComponent newL = new AddInductor(nbElements);
 				newL.getButton().addActionListener(new ActionListener() {
 
 					@Override
@@ -318,7 +321,7 @@ public class BuildScreen extends JFrame{
 		addcomponents = new ArrayList();
 		nbSource = 0;
 		nbElements = 0;
-		AddComponent.index = 0;
+
 		
 		JPanel parallel = new JPanel();
 		parallel.setLayout(new BorderLayout());
@@ -332,7 +335,6 @@ public class BuildScreen extends JFrame{
 		addcomponents = new ArrayList();
 		nbSource = 0;
 		nbElements = 0;
-		AddComponent.index = 0;
 		
 		JPanel series = new JPanel();
 		series.setLayout(new BorderLayout());
@@ -345,6 +347,7 @@ public class BuildScreen extends JFrame{
 		JTabbedPane tabpane = new JTabbedPane();
 		tabpane.addTab("Parallel Circuit", createParallel());
 		tabpane.addTab("Serial Circuit", createSerial());
+		tabpane.setComponentAt(0, createParallel());
 		tabpane.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
@@ -360,6 +363,7 @@ public class BuildScreen extends JFrame{
 		});
 		return tabpane;
 	}
+	
 	
 	public BuildScreen() {
 		Container cp = getContentPane();

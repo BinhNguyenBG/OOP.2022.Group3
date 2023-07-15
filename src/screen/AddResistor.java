@@ -4,10 +4,10 @@ import ElectricalElement.Resistor;
 
 public class AddResistor extends AddComponent{
 	
-	public AddResistor() {
+	public AddResistor(int index) {
 		super();
 		
-		index += 1;
+		this.index = index;
 		this.setName("R" + index);
 		this.getUnit().addItem("Ω");
 		this.getUnit().addItem("kΩ");
