@@ -4,7 +4,7 @@ Mini-project for OOP 2022.2, HUST.
 
 Demonstration
 ---
-![dummy](https://github.com/BinhNguyenBG/OOP_Project/blob/main/Ảnh%20màn%20hình%202023-07-15%20lúc%2021.46.23.png)
+![dummy]([Demo.png](https://github.com/BinhNguyenBG/OOP_Project/blob/dbab7554cd4bdf7cf853ff8b820755d25228ac4a/Demo.png))
 
 Video link: https://www.youtube.com/watch?v=Ncg5eIUVmPI
 
