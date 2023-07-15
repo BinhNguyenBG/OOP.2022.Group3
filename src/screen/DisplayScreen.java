@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 
 import Circuit.*;
 import ElectricalElement.ElectricalElement;
-import DisplayScreen.MainGUI;
+import CircuitDrawing.MainGUI;
 
 import javax.swing.JLabel;
 import java.awt.BorderLayout;

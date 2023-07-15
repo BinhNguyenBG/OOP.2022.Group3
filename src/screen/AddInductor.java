@@ -4,10 +4,10 @@ import ElectricalElement.Inductor;
 
 public class AddInductor extends AddComponent{
 	
-	public AddInductor() {
+	public AddInductor(int index) {
 		super();
 		
-		index += 1;
+		this.index = index;
 		this.setName("L" + index);
 		this.getUnit().addItem("H");
 		this.getUnit().addItem("mH");
