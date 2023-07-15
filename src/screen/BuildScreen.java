@@ -321,7 +321,6 @@ public class BuildScreen extends JFrame{
 		addcomponents = new ArrayList();
 		nbSource = 0;
 		nbElements = 0;
-		//AddComponent.index = 0;
 		
 		JPanel parallel = new JPanel();
 		parallel.setLayout(new BorderLayout());
@@ -335,7 +334,6 @@ public class BuildScreen extends JFrame{
 		addcomponents = new ArrayList();
 		nbSource = 0;
 		nbElements = 0;
-		//AddComponent.index = 0;
 		
 		JPanel series = new JPanel();
 		series.setLayout(new BorderLayout());

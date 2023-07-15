@@ -8,14 +8,14 @@ import java.awt.event.*;
 import java.awt.geom.*;
 
 public abstract class AddComponent extends JPanel{
-	public static int index = 0;
+	public int index = 0;
 	
-	public static int getIndex() {
+	public int getIndex() {
 		return index;
 	}
 
-	public static void setIndex(int index) {
-		AddComponent.index = index;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public JTextField getParameter() {
