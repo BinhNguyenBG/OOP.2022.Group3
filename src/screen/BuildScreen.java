@@ -86,15 +86,35 @@ public class BuildScreen extends JFrame{
 				}
 				
 				circuit.trigger();
-				if (circuit instanceof ParallelCircuit) {
-					new DisplayScreen((ParallelCircuit)circuit);
-					circuit = new ParallelCircuit();
-				}
-				else {
-						
-					new DisplayScreen((SerialCircuit)circuit);
-					circuit = new SerialCircuit();
+				JPanel attention = attentionPanel();
+				if (attention != null) {
+					if (east.getComponents().length <= 2) {
+						east.add(attention);
+					} else {
+						east.remove(east.getComponents().length - 1);
+						east.add(attention);
 					}
+					getContentPane().revalidate();
+					getContentPane().repaint();
+					
+					circuit.getElements().clear();
+					
+				} else {
+					if (circuit instanceof ParallelCircuit) {
+						new DisplayScreen((ParallelCircuit)circuit);
+						circuit = new ParallelCircuit();
+					}
+					else {
+						
+						new DisplayScreen((SerialCircuit)circuit);
+						circuit = new SerialCircuit();
+					}
+					if (east.getComponents().length == 3) {
+						east.remove(2);
+						getContentPane().revalidate();
+						getContentPane().repaint();
+					}
+				}
 			}
 			
 		});
@@ -361,6 +381,50 @@ public class BuildScreen extends JFrame{
 			}			
 		});
 		return tabpane;
+	}
+	
+	JPanel attentionPanel() {
+		JPanel attention = new JPanel();
+		attention.setLayout(new BoxLayout(attention, BoxLayout.Y_AXIS));
+		
+		JLabel announcement = new JLabel("Short Circuit is found");
+		announcement.setFont(new Font("Tahoma", Font.BOLD, 20));
+		announcement.setForeground(Color.RED);
+		attention.add(announcement);
+		
+		ArrayList<String> errorList = new ArrayList<String>();
+		if (circuit instanceof ParallelCircuit) {
+			for (ElectricalElement ee: circuit.getElements()) {
+				if (ee.getResistance().equals(new Complex(0.0,0.0)) 
+						|| ee.getResistance().equals(new Complex(0.0,-0.0))){
+					String error = "The resistance at "+ ee.getName() + " equals 0";
+					errorList.add(error);
+				}
+			}
+		} else {
+			if (circuit.getEquivalentResistance().equals(new Complex(0.0,0.0))){
+				String error = "The equivalent resistance equals 0";
+				errorList.add(error);
+			}
+		}
+		
+		if (errorList.size() != 0) {
+			for (int i =0; i< errorList.size();i++) {
+				JLabel error = new JLabel();
+				error.setText("Error <"+(i+1)+">: " + errorList.get(i));
+				error.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				error.setForeground(Color.RED);
+				attention.add(error);
+			}
+			JLabel enterAgain = new JLabel();
+			enterAgain.setText("Please enter again approriately");
+			enterAgain.setFont(new Font("Tahoma", Font.PLAIN, 15));
+
+			attention.add(enterAgain);
+			return attention;
+		} else {
+			return null;
+		}
 	}
 	
 	
