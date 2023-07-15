@@ -26,13 +26,13 @@ public class Resistor extends ElectricalElement{
 		else if (this.getUnit().equals("MΩ")) {
 			return new Complex(this.resistanceValueWithoutUnit.getReal()*1e6, 0);
 		}
-		else if (this.getUnit().equals("GV")) {
+		else if (this.getUnit().equals("GΩ")) {
 			return new Complex(this.resistanceValueWithoutUnit.getReal()*1e9, 0);
 		}
-		else if (this.getUnit().equals("mV")) {
+		else if (this.getUnit().equals("mΩ")) {
 			return new Complex(this.resistanceValueWithoutUnit.getReal()*1e-3, 0);
 		}
-		else if (this.getUnit().equals("µV")) {
+		else if (this.getUnit().equals("µΩ")) {
 			return new Complex(this.resistanceValueWithoutUnit.getReal()*1e-6, 0);
 		}
 		return this.resistanceValueWithoutUnit;
