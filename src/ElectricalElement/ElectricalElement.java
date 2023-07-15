@@ -7,12 +7,14 @@ public abstract class ElectricalElement {
 	private Complex currentIntensity;
 	private Complex resistance;
 	private String name;
+	private int id;
 	private static int nbElement;
-	
+	private String unit;
 	
 	public ElectricalElement() {
 		// TODO Auto-generated constructor stub
 		nbElement++;
+		this.id = nbElement;
 	}
 
 	public String getName() {
@@ -51,5 +53,21 @@ public abstract class ElectricalElement {
 		this.resistance = resistance;
 	}
 	
+	public String getUnit() {
+		return unit;
+	}
+
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
 	public abstract String toString();
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }
