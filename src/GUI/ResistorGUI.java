@@ -12,9 +12,11 @@ import java.awt.*;
 public class ResistorGUI {
 	private Circuit circuit;
     private Resistor resistor;
+    private int seed;
 
     public ResistorGUI(Resistor r, Circuit cc) {
     	this.circuit = cc;
+    	this.seed = cc.getElements().size();
         this.resistor = r;
     }
 

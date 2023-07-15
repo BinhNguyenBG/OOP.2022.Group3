@@ -11,13 +11,15 @@ import Circuit.Circuit;
 import Circuit.SerialCircuit;
 import VoltageSource.AC;
 
-public class ACGUI{
+public class ACGUI {
 	private AC ac;
 	private Circuit circuit;
+	private int seed;
 	
 	public ACGUI(AC ac, Circuit cc) {
 		this.circuit = cc;
 		this.ac = ac;
+		this.seed = cc.getElements().size();
 	}
 	
 	public void draw(Graphics g) {
@@ -27,16 +29,16 @@ public class ACGUI{
             Stroke stroke = new BasicStroke(5); // Set the line width to 5 pixels
             g2d.setStroke(stroke);
             
-            g2d.drawLine(50, 400, 350, 400);
-            g2d.drawOval(50+50, 350, 150, 100);
-            g2d.drawLine(50+50+150, 400, 800, 400);
-            g2d.drawArc(50+38+37, 400-22, 38, 45, 0, 180);
-            g2d.drawArc(50+38+37+38, 400-22, 38, 45, 180, 180);
+            g2d.drawLine(50, 400, 50+((250*seed-150)/2), 400);
+            g2d.drawOval(50+((250*seed-150)/2), 350, 150, 100);
+            g2d.drawLine(50+((250*seed-150)/2)+150, 400, 50+250*seed, 400);
+            g2d.drawArc(50+((250*seed-150)/2)+37, 400-22, 38, 45, 0, 180);
+            g2d.drawArc(50+((250*seed-150)/2)+37+38, 400-22, 38, 45, 180, 180);
             
           //Draw String:
             g2d.setFont(new Font("Arial", Font.BOLD,30));
-    		g2d.drawString((int)ac.getVoltage()+" "+ ac.getVolunit(),50+38+40, 305); 
-    		g2d.drawString((int)ac.getFrequency()+" "+ac.getFrequnit(), 50+300+40, 335);
+    		g2d.drawString((int)ac.getVoltage()+" "+ ac.getVolunit(),50+((250*seed-150)/2)+40, 305); 
+    		g2d.drawString((int)ac.getFrequency()+" "+ac.getFrequnit(), 50+((250*seed-150)/2)+40, 335);
             
     	} else {
             Graphics2D g2d = (Graphics2D) g;

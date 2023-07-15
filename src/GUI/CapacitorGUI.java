@@ -12,13 +12,15 @@ import Circuit.SerialCircuit;
 import ElectricalElement.Capacitor;
 import java.text.DecimalFormat;
 
-public class CapacitorGUI{
-	private Capacitor capacitor;
+public class CapacitorGUI {
 	private Circuit circuit;
+	private int seed;
+	private Capacitor capacitor;
 
     public CapacitorGUI(Capacitor c, Circuit cc) {
     	this.circuit = cc;
         this.capacitor = c;
+        this.seed = cc.getElements().size();
     }
     
     public void draw(Graphics g) {
@@ -37,7 +39,7 @@ public class CapacitorGUI{
             	
             }
 
-            int startX_1 = 50;
+            int startX_1 = 50 + 250*(this.capacitor.getId()-1);
             int startY_1 = 200;
             int endX_1 = startX_1 + 100;
             int endY_1 = 200;
@@ -81,7 +83,7 @@ public class CapacitorGUI{
             Stroke stroke = new BasicStroke(5); // Set the line width to 5 pixels
             g2d.setStroke(stroke);
 
-            int startX_1 = 400 ;
+            int startX_1 = 400 + 200*(this.capacitor.getId()-1);
             int startY_1 = 50;
             int endX_1 = startX_1;
             int endY_1 = startY_1 + 100;

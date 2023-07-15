@@ -14,11 +14,13 @@ import ElectricalElement.Capacitor;
 import ElectricalElement.Inductor;
 
 public class InductorGUI {
-	private Inductor inductor;
 	private Circuit circuit;
+	private Inductor inductor;
+	private int seed;
 
     public InductorGUI(Inductor i, Circuit cc) {
     	this.circuit = cc;
+    	this.seed = cc.getElements().size();
         this.inductor = i;
     }
     

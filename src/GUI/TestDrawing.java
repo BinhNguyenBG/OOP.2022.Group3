@@ -1,5 +1,7 @@
 package GUI;
 
+import javax.swing.JFrame;
+
 import Circuit.Circuit;
 import Circuit.SerialCircuit;
 import ElectricalElement.Resistor;
@@ -10,6 +12,8 @@ public class TestDrawing {
 		Circuit cc = new SerialCircuit();
 		cc.addVoltageSource(new DC(6, "V"));
 		cc.addElement(new Resistor(6, ""));
-		new MainGUI(cc);
+		JFrame frame = new JFrame();
+		frame.add(new MainGUI(cc));
+		frame.setVisible(true);
 	}
 }
