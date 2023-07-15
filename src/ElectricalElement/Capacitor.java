@@ -24,7 +24,7 @@ public class Capacitor extends ElectricalElement{
 		this.capacitance = capacitance;
 	}
 	
-	public double getSICapitance() {
+	public double getSICapacitance() {
 		if (this.getUnit().equals("mF")) {
 			return capacitance*1e-3;
 		}
