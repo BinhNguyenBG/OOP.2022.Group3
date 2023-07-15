@@ -13,19 +13,16 @@ import Circuit.SerialCircuit;
 import ElectricalElement.Capacitor;
 import ElectricalElement.Inductor;
 
-public class InductorGUI {
-	private Circuit circuit;
+public class InductorGUI extends ElementGUI{
 	private Inductor inductor;
-	private int seed;
 
     public InductorGUI(Inductor i, Circuit cc) {
-    	this.circuit = cc;
-    	this.seed = cc.getElements().size();
+    	super(cc);
         this.inductor = i;
     }
     
     public void draw(Graphics g) {
-    	if (circuit instanceof SerialCircuit) {
+    	if (super.getCircuit() instanceof SerialCircuit) {
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.BLACK);
             Stroke stroke = new BasicStroke(5); // Set the line width to 5 pixels
@@ -71,7 +68,7 @@ public class InductorGUI {
             g2d.drawArc(startX_4, startY_4+16, 10, 13, 180, 180);
             g2d.drawArc(startX_5, startY_5+16, 10, 13, 180, 180);
             
-            if (inductor.getId() == circuit.getElements().size()) {
+            if (inductor.getId() == super.getCircuit().getElements().size()) {
             	int startX_6 = startX_5 + width+50;
             	int startY_6 = endY_1;
             	int endX_6 = startX_6;

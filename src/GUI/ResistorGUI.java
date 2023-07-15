@@ -9,20 +9,17 @@ import ElectricalElement.Resistor;
 
 import java.awt.*;
 
-public class ResistorGUI {
-	private Circuit circuit;
+public class ResistorGUI extends ElementGUI{
     private Resistor resistor;
-    private int seed;
 
     public ResistorGUI(Resistor r, Circuit cc) {
-    	this.circuit = cc;
-    	this.seed = cc.getElements().size();
+    	super(cc);
         this.resistor = r;
     }
 
     
     public void draw(Graphics g) {
-    	if (circuit instanceof SerialCircuit) {
+    	if (super.getCircuit() instanceof SerialCircuit) {
     		//super.paint(g);
             Graphics2D g2d = (Graphics2D) g;
             g2d.setColor(Color.BLACK);
@@ -75,7 +72,7 @@ public class ResistorGUI {
             int endY_8 = endY_7;
             g2d.drawLine(endX_7, endY_7, endX_8, endY_8);
             
-			if (resistor.getId() == circuit.getElements().size()) {
+			if (resistor.getId() == super.getCircuit().getElements().size()) {
             	int endX_9 = endX_8;
             	int endY_9 = endY_8+200;
             	g2d.drawLine(endX_8, endY_8, endX_9, endY_9);
