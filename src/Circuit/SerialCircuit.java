@@ -13,30 +13,69 @@ public class SerialCircuit extends Circuit{
 	}
 	
 	public void trigger() {
-		//set resistance of all elements in the circuit
-		for (ElectricalElement e: super.getElements()) {
-			if (e instanceof Inductor) {
-				//calculate the resistance of the inductor
-				Complex lRes = j.multiply(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Inductor) e).getSIInductance());
+		if (this.getVoltageSource() instanceof AC) {
+			//set resistance of all elements in the circuit
+			for (ElectricalElement e: super.getElements()) {
+				if (e instanceof Inductor) {
+					//calculate the resistance of the inductor
+					Complex lRes = j.multiply(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Inductor) e).getSIInductance());
+					
+					e.setResistance(lRes);				
+				} else if (e instanceof Capacitor) {
+					//calculate the resistance of the capacitor
+					Complex cRes = j.multiply(-1.0/(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Capacitor) e).getSICapacitance()));
+					
+					e.setResistance(cRes);
+				}
+			}
+			//get main current intensity of the circuit
+			Complex equiRes = this.getEquivalentResistance();
+			Complex curInt = (new Complex(super.getVoltageSource().getSIVoltage(), 0)).divide(equiRes);
+			
+			//set current intensity and voltage of all elements
+			for (ElectricalElement e: super.getElements()) {
+				e.setCurrentIntensity(curInt);
+				e.setVoltage(curInt.multiply(e.getResistance()));
+			}
+		} else {
+			double inv_equivalentCapacitance = 0;
+			for (ElectricalElement e: super.getElements()) {
+				if (e instanceof Inductor) {
+					//calculate the resistance of the inductor
+					Complex lRes = new Complex(0, 0);
+					
+					e.setResistance(lRes);				
+				} else if (e instanceof Capacitor) {
+					//calculate the resistance of the capacitor
+					Complex cRes = new Complex(Double.POSITIVE_INFINITY, 0);
+					
+					e.setResistance(cRes);
+					inv_equivalentCapacitance += 1/(((Capacitor)e).getSICapacitance());
+				}
+			}
+			//get the voltage of capacitors in serial circuit with DC voltage src
+			double equivalentCapacitance = 1/inv_equivalentCapacitance;
+			double q = this.getVoltageSource().getVoltage()*equivalentCapacitance;
+			//get main current intensity of the circuit
+			Complex equiRes = this.getEquivalentResistance();
+			Complex curInt = (new Complex(super.getVoltageSource().getSIVoltage(), 0)).divide(equiRes);
+			
+			//set current intensity and voltage of all elements
+			for (ElectricalElement e: super.getElements()) {
+				if (e instanceof Capacitor){
+					e.setCurrentIntensity(curInt);
+					e.setVoltage(new Complex(q/((Capacitor)e).getSICapacitance(), 0));
+				} else {
+					e.setCurrentIntensity(curInt);
+					e.setVoltage(curInt.multiply(e.getResistance()));
+				}
 				
-				e.setResistance(lRes);				
-			} else if (e instanceof Capacitor) {
-				//calculate the resistance of the capacitor
-				Complex cRes = j.multiply(-1.0/(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Capacitor) e).getSICapacitance()));
-				
-				e.setResistance(cRes);
 			}
 		}
-		//get main current intensity of the circuit
-		Complex equiRes = this.getEquivalentResistance();
-		Complex curInt = (new Complex(super.getVoltageSource().getSIVoltage(), 0)).divide(equiRes);
 		
-		//set current intensity and voltage of all elements
-		for (ElectricalElement e: super.getElements()) {
-			e.setCurrentIntensity(curInt);
-			e.setVoltage(curInt.multiply(e.getResistance()));
-		}
-			
+		
+		
+		
 	}
 	
 	public Complex getEquivalentResistance() {
