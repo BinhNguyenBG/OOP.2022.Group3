@@ -314,6 +314,11 @@ public class BuildScreen extends JFrame{
 	}
 	
 	JPanel createParallel() {
+		circuit = new ParallelCircuit();
+		addcomponents = new ArrayList();
+		nbSource = 0;
+		nbElements = 0;
+		AddComponent.index = 0;
 		
 		JPanel parallel = new JPanel();
 		parallel.setLayout(new BorderLayout());
@@ -323,6 +328,11 @@ public class BuildScreen extends JFrame{
 	}
 	
 	JPanel createSerial() {
+		circuit = new SerialCircuit();
+		addcomponents = new ArrayList();
+		nbSource = 0;
+		nbElements = 0;
+		AddComponent.index = 0;
 		
 		JPanel series = new JPanel();
 		series.setLayout(new BorderLayout());
@@ -340,8 +350,10 @@ public class BuildScreen extends JFrame{
 			public void stateChanged(ChangeEvent e) {
 				String title = tabpane.getTitleAt(tabpane.getSelectedIndex());
 				if (title.equals("Parallel Circuit")) {
+					tabpane.setComponentAt(0, createParallel());
 					circuit = new ParallelCircuit();
 				} else if (title.equals("Serial Circuit")) {
+					tabpane.setComponentAt(1, createSerial());
 					circuit = new SerialCircuit();
 				}
 			}			
