@@ -6,7 +6,7 @@ Demonstration
 ---
 ![dummy](https://github.com/BinhNguyenBG/OOP_Project/blob/dbab7554cd4bdf7cf853ff8b820755d25228ac4a/Demo.png)
 
-Video link: https://www.youtube.com/watch?v=Ncg5eIUVmPI
+Video link: https://youtu.be/_s2489ocm9w
 
 Member task
 ---
