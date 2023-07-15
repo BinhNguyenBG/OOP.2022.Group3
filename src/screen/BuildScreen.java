@@ -45,121 +45,40 @@ public class BuildScreen extends JFrame{
 				for (AddComponent addcomp: addcomponents) {
 					if (addcomp instanceof AddAC) {
 						double voltage = addcomp.getDoubleParameter();
-						String unit = (String)addcomp.getUnit().getSelectedItem();
-						if (unit.equals("kV")) {
-							voltage *= 1e3;
-						}
-						else if (unit.equals("MV")) {
-							voltage *= 1e6;
-						}
-						else if (unit.equals("mV")) {
-							voltage *= 1e-3;
-						}
-						else if (unit.equals("µV")) {
-							voltage *= 1e-6;
-						}
-						else if (unit.equals("nV")) {
-							voltage *= 1e-9;
-						}
+						String volunit = (String)addcomp.getUnit().getSelectedItem();
 						
 						double frequency = ((AddAC)addcomp).getMoreDoubleParameter();
 						String frequnit = (String)((AddAC)addcomp).getOptunit().getSelectedItem();
-						if (frequnit.equals("kHz")) {
-							frequency *= 1e3;
-						}
-						else if (frequnit.equals("MHz")) {
-							frequency *= 1e6;
-						}
-						else if (frequnit.equals("GHz")) {
-							frequency *= 1e9;
-						}
-						else if (frequnit.equals("THz")) {
-							frequency *= 1e12;
-						}
 						
-						circuit.addVoltageSource(new AC(voltage, frequency));
+						circuit.addVoltageSource(new AC(voltage, volunit, frequency, frequnit));
 					}
 					else if (addcomp instanceof AddDC) {
 						double voltage = addcomp.getDoubleParameter();
-						String unit = (String)addcomp.getUnit().getSelectedItem();
-						if (unit.equals("kV")) {
-							voltage *= 1e3;
-						}
-						else if (unit.equals("MV")) {
-							voltage *= 1e6;
-						}
-						else if (unit.equals("mV")) {
-							voltage *= 1e-3;
-						}
-						else if (unit.equals("µV")) {
-							voltage *= 1e-6;
-						}
-						else if (unit.equals("nV")) {
-							voltage *= 1e-9;
-						}
+						String volunit = (String)addcomp.getUnit().getSelectedItem();
 						
-						circuit.addVoltageSource(new DC(addcomp.getDoubleParameter()));
+						circuit.addVoltageSource(new DC(voltage, volunit));
 					}
 					else if (addcomp instanceof AddResistor) {
 						double resistance = addcomp.getDoubleParameter();
 						String unit = (String)addcomp.getUnit().getSelectedItem();
-						if (unit.equals("kΩ")) {
-							resistance *= 1e3;
-						}
-						else if (unit.equals("MΩ")) {
-							resistance *= 1e6;
-						}
-						else if (unit.equals("GV")) {
-							resistance *= 1e9;
-						}
-						else if (unit.equals("mV")) {
-							resistance *= 1e-3;
-						}
-						else if (unit.equals("µV")) {
-							resistance *= 1e-6;
-						}
 						
-						Resistor resistor = new Resistor(resistance);
+						Resistor resistor = new Resistor(resistance, unit);
 						resistor.setName(addcomp.getName());
 						circuit.addElement(resistor);
 					}
 					else if (addcomp instanceof AddCapacitor) {
 						double capacitance = addcomp.getDoubleParameter();
 						String unit = (String)addcomp.getUnit().getSelectedItem();
-						if (unit.equals("mF")) {
-							capacitance *= 1e-3;
-						}
-						else if (unit.equals("µF")) {
-							capacitance *= 1e-6;
-						}
-						else if (unit.equals("nF")) {
-							capacitance *= 1e-9;
-						}
-						else if (unit.equals("pF")) {
-							capacitance *= 1e-12;
-						}
 						
-						Capacitor capacitor = new Capacitor(capacitance);
+						Capacitor capacitor = new Capacitor(capacitance, unit);
 						capacitor.setName(addcomp.getName());
 						circuit.addElement(capacitor);
 					}
 					else {
 						double inductance = addcomp.getDoubleParameter();
 						String unit = (String)addcomp.getUnit().getSelectedItem();
-						if (unit.equals("mH")) {
-							inductance *= 1e-3;
-						}
-						else if (unit.equals("µH")) {
-							inductance *= 1e-6;
-						}
-						else if (unit.equals("nH")) {
-							inductance *= 1e-9;
-						}
-						else if (unit.equals("pH")) {
-							inductance *= 1e-12;
-						}
 						
-						Inductor inductor = new Inductor(inductance);
+						Inductor inductor = new Inductor(inductance, unit);
 						inductor.setName(addcomp.getName());
 						circuit.addElement(inductor);
 					}
@@ -395,6 +314,7 @@ public class BuildScreen extends JFrame{
 	}
 	
 	JPanel createParallel() {
+		
 		JPanel parallel = new JPanel();
 		parallel.setLayout(new BorderLayout());
 		parallel.add(createCenter(), BorderLayout.CENTER);
@@ -403,6 +323,7 @@ public class BuildScreen extends JFrame{
 	}
 	
 	JPanel createSerial() {
+		
 		JPanel series = new JPanel();
 		series.setLayout(new BorderLayout());
 		series.add(createCenter(), BorderLayout.CENTER);
@@ -427,6 +348,7 @@ public class BuildScreen extends JFrame{
 		});
 		return tabpane;
 	}
+	
 	public BuildScreen() {
 		Container cp = getContentPane();
 		cp.add(createTabbedPane());
