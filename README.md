@@ -9,16 +9,15 @@ Demonstration
 Video link: https://youtu.be/_s2489ocm9w
 
 ### Installation 
--  We just use [Java 17](https://www.oracle.com/java/technologies/downloads/#java17) and [Eclipse](https://www.eclipse.org/) for our project.
--  We use a [Complex number library](https://archive.apache.org/dist/commons/math/binaries/commons-math3-3.6.1-bin.zip) to calculate the
-statistics of the circuit and its elements. Add it to your class path.
+-  We just use [Java 17](https://www.oracle.com/java/technologies/downloads/#java17) for our project.
+-  We use a [Complex number library](https://archive.apache.org/dist/commons/math/binaries/commons-math3-3.6.1-bin.zip). Add it to your class path.
 -  Our main Class is [execute.java](https://github.com/BinhNguyenBG/OOP.20222.Group3/blob/main/src/execute/Execute.java)
 
 ### Folder Organization
 1. [src](/src) folder: official Java Project
 2. [design](/design) folder: all designs for the project (class diagram and use-case diagram)
 3. [report](/report) folder: `.pdf` report file
-4. [presentation](/presentation) folder: slides for presentation
+4. [Presentation](/Presentation) folder: slides for presentation
 
 ### Member information 
 
