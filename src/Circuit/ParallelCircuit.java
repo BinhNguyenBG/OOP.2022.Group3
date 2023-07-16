@@ -23,24 +23,9 @@ public class ParallelCircuit extends Circuit{
 		
 		//set resistance, current intensity of all elements in the circuit
 		for (ElectricalElement e: super.getElements()) {
-			if (e instanceof Resistor) {
-				e.setCurrentIntensity(vol.divide(e.getResistance()));
-			} else if (e instanceof Inductor) {
-				//calculate the resistance of the inductor
-				Complex lRes = j.multiply(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Inductor) e).getSIInductance());
-				
-				e.setResistance(lRes);
-				e.setCurrentIntensity(vol.divide(e.getResistance()));
-				if (lRes.getImaginary() == 0) {
-					System.out.println("Short circuit detected");
-				}
-			} else if (e instanceof Capacitor) {
-				//calculate the resistance of the capacitor
-				Complex cRes = j.multiply(-1.0/(2*Math.PI*super.getVoltageSource().getSIFrequency()*((Capacitor) e).getSICapacitance()));
-				
-				e.setResistance(cRes);
-				e.setCurrentIntensity(vol.divide(cRes));
-			}
+			Complex resistance = e.computeResistace(super.getVoltageSource());
+			e.setResistance(resistance);
+			e.setCurrentIntensity(vol.divide(resistance));
 		}
 	}
 	
