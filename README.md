@@ -39,6 +39,7 @@ Video link: https://youtu.be/_s2489ocm9w
 | CircuitDrawing package            | 3, 4          |
 | Screen package                    | 1, 2          |
 | Report                            | 3, 4          |
+| Slides                            | 1             |
 | Presentation                      |               |
 
     
