@@ -25,13 +25,11 @@ public class DisplayScreen extends JFrame {
 	 */
 	public DisplayScreen(ParallelCircuit circuit) {
 		this.circuit = circuit;
-		circuit.trigger();
 		createScreen();
 	}
 
 	public DisplayScreen(SerialCircuit circuit) {
 		this.circuit = circuit;
-		circuit.trigger();
 		createScreen();
 	}
 
