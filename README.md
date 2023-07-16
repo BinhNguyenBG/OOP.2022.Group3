@@ -10,6 +10,8 @@ Video link: https://youtu.be/_s2489ocm9w
 
 ### Installation 
 -  We just use [Java 17](https://www.oracle.com/java/technologies/downloads/#java17) and [Eclipse](https://www.eclipse.org/) for our project.
+-  We use a [Complex number library](https://archive.apache.org/dist/commons/math/binaries/commons-math3-3.6.1-bin.zip) to calculate the
+statistics of the circuit and its elements. Add it to your class path.
 -  Our main Class is [execute.java](https://github.com/BinhNguyenBG/OOP.20222.Group3/blob/main/src/execute/Execute.java)
 
 ### Folder Organization
