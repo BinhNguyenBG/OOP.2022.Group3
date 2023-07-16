@@ -40,6 +40,5 @@ Video link: https://youtu.be/_s2489ocm9w
 | Screen package                    | 1, 2          |
 | Report                            | 3, 4          |
 | Presentation                      |               |
-| Demo video                        | 4             |
 
     
