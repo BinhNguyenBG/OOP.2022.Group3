@@ -22,9 +22,9 @@ Video link: https://youtu.be/_s2489ocm9w
 
 | Member ID | Full Name             | Student ID    |  Github|
 | :--:|    :---:              |       :---:   | :---:|
-| 1   | Vu Lam Anh        | 20204876      |https://github.com/Lamanh1234|
-| 2   | Truong Gia Bach   | 20204904      |https://github.com/bachtruoq|
-| 3   | Le Ngoc Binh      | 20204905      |https://github.com/BinhOiDungNghien |
+| 1   | Vu Lam Anh        | 20214876      |https://github.com/Lamanh1234|
+| 2   | Truong Gia Bach   | 20210087      |https://github.com/bachtruoq|
+| 3   | Le Ngoc Binh      | 20214878      |https://github.com/BinhOiDungNghien |
 | 4   | Nguyen Thanh Binh | 20210106      |https://github.com/BinhNguyenBG |
 
 ### Member assignment
