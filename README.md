@@ -15,7 +15,7 @@ Video link: https://youtu.be/_s2489ocm9w
 ### Folder Organization
 1. [src](/src) folder: official Java Project
 2. [design](/design) folder: all designs for the project (class diagram and use-case diagram)
-3. [report](/report) folder: `.docx` report file
+3. [report](/report) folder: `.pdf` report file
 4. [presentation](/presentation) folder: slides for presentation
 
 ### Member information 
