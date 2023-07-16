@@ -2,6 +2,8 @@ package ElectricalElement;
 
 import org.apache.commons.math3.complex.*;
 
+import VoltageSource.VoltageSource;
+
 public class Resistor extends ElectricalElement{
 	Complex resistanceValueWithoutUnit;
 	public Resistor() {
@@ -44,5 +46,11 @@ public class Resistor extends ElectricalElement{
 
 	public Complex getResistanceValueWithoutUnit() {
 		return resistanceValueWithoutUnit;
+	}
+
+	@Override
+	public Complex computeResistace(VoltageSource s) {
+		// TODO Auto-generated method stub
+		return this.getResistance();
 	}
 }

@@ -1,5 +1,9 @@
 package ElectricalElement;
 
+import org.apache.commons.math3.complex.Complex;
+
+import VoltageSource.VoltageSource;
+
 public class Inductor extends ElectricalElement{
 	private double inductance;
 		
@@ -42,6 +46,13 @@ public class Inductor extends ElectricalElement{
 	
 	public String toString() {
 		return (super.getName() + " = " + this.inductance + "H, U = " + super.getVoltage().getReal() + "+" + super.getVoltage().getImaginary() +"i V, I = " + super.getCurrentIntensity().getReal() + "+" + super.getCurrentIntensity().getImaginary() + "i A, R_L = " + super.getResistance().getReal() + "+" + super.getResistance().getImaginary()+"i ohm");
+	}
+
+	@Override
+	public Complex computeResistace(VoltageSource s) {
+		// TODO Auto-generated method stub
+		Complex lRes = j.multiply(2*Math.PI*s.getSIFrequency()*this.getSIInductance());
+		return lRes;
 	}
 
 }

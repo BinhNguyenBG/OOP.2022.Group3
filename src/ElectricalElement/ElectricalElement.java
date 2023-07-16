@@ -2,6 +2,8 @@ package ElectricalElement;
 
 import org.apache.commons.math3.complex.*;
 
+import VoltageSource.VoltageSource;
+
 public abstract class ElectricalElement {
 	private Complex voltage;
 	private Complex currentIntensity;
@@ -10,6 +12,7 @@ public abstract class ElectricalElement {
 	private int id;
 	//private static int nbElement;
 	private String unit;
+	public static Complex j = new Complex(0, 1);
 	
 	public ElectricalElement() {
 		// TODO Auto-generated constructor stub
@@ -70,4 +73,6 @@ public abstract class ElectricalElement {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public abstract Complex computeResistace(VoltageSource s);
 }

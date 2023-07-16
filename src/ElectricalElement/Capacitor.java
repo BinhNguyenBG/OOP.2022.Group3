@@ -1,5 +1,9 @@
 package ElectricalElement;
 
+import org.apache.commons.math3.complex.Complex;
+
+import VoltageSource.VoltageSource;
+
 public class Capacitor extends ElectricalElement{
 	private double capacitance;
 
@@ -42,5 +46,12 @@ public class Capacitor extends ElectricalElement{
 	
 	public String toString() {
 		return (super.getName() + " = " + this.capacitance + "F, U = " + super.getVoltage().getReal() + "+" + super.getVoltage().getImaginary() + "i V, I = " + super.getCurrentIntensity().getReal() + "+" + super.getCurrentIntensity().getImaginary() + "i A, R_C = " + super.getResistance().getReal() + "+" + super.getResistance().getImaginary() + "i ohm");
+	}
+
+	@Override
+	public Complex computeResistace(VoltageSource s) {
+		// TODO Auto-generated method stub
+		Complex cRes = j.multiply(-1.0/(2*Math.PI*s.getSIFrequency()*this.getSICapacitance()));
+		return cRes;
 	}
 }
