@@ -8,15 +8,7 @@ import java.awt.event.*;
 import java.awt.geom.*;
 
 public abstract class AddComponent extends JPanel{
-	public int index = 0;
-	
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
+	protected static int index = 0;
 
 	public JTextField getParameter() {
 		return parameter;
