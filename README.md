@@ -33,7 +33,7 @@ Video link: https://youtu.be/_s2489ocm9w
 | Work                              | Member involved (Member ID)           | 
 | :--                               |    :---       |
 | General class diagram             | 2, 4          |
-| Model detail class diagram        | 3             |
+| Model detail class diagram        | 1, 2, 3, 4    |
 | Use-case diagram                  | 3             |
 | Model package                     | 1, 2, 4       |
 | CircuitDrawing package            | 3, 4          |
